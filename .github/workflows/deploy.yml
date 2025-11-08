@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v3
+
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v3
+
+        - name: Build Docker image
+          run: docker build -t ai-quote-api .
+
+        - name: Run simple test
+          run: echo "🙌 Build successful!"
+
+# Explanation
+#   Every time you push to main, it builds your image in CI
+#   Later. We'll extend this to deploy automaticallu to AWS (via SSH or ECR)
