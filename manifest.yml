@@ -7,12 +7,16 @@ spec:
   selector:
     matchLabels:
       app: quote-generator
-  spec:
-    containers:
-    - name: quote-generator
-      image: sameerrrrr/quote-api:latest
-      ports:
-      - containerPort: 8000
+  template:
+    metadata:
+      labels:
+        app: quote-generator
+    spec:
+      containers:
+      - name: quote-generator
+        image: sameerrrrr/quote-api:latest
+        ports:
+        - containerPort: 8000
 
 ---
 
