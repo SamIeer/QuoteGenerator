@@ -30,6 +30,9 @@ jobs:
         uses: azure/setup-kubectl@v3
         with:
           version: 'latest'
+      
+      - name: Create kind cluster
+        uses: helm/kind-action@v1
 
       - name: Deploy to Kubernetes
         run: |
